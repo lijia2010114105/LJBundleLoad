@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'LJBundleLoad_Example' do
+  pod 'LJBundleLoad', :path => '../'
+
+  target 'LJBundleLoad_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
