@@ -1,0 +1,16 @@
+PODS:
+  - LJBundleLoad (0.1.0)
+
+DEPENDENCIES:
+  - LJBundleLoad (from `../`)
+
+EXTERNAL SOURCES:
+  LJBundleLoad:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  LJBundleLoad: 01838a8c205f6f657ca548a853a3fb21a2bf1dfe
+
+PODFILE CHECKSUM: 8587ba35f820d4a8e06e3e38e48d67baec451ec0
+
+COCOAPODS: 1.10.0

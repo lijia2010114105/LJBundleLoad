@@ -1,0 +1,6 @@
+framework module LJBundleLoad {
+  umbrella header "LJBundleLoad-umbrella.h"
+
+  export *
+  module * { export * }
+}
