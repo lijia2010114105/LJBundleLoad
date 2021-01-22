@@ -6,6 +6,7 @@
 //
 
 #import "UIImage+LJLoad.h"
+#import "NSBundle+LJLoad.h"
 
 @implementation UIImage (LJLoad)
 
@@ -44,6 +45,14 @@
     NSBundle *associateBunle = [NSBundle bundleWithURL:associateBundleURL];
     associateBundleURL = [associateBunle URLForResource:@"CXSalesmanModule" withExtension:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithURL:associateBundleURL];
+    UIImage *img = [UIImage imageNamed:imageName
+      inBundle: bundle
+    compatibleWithTraitCollection:nil];
+    return img;
+}
+
++ (instancetype)imageWithName:(NSString *)imageName moduleName:(NSString *)moduleName targetClass:(Class)targetClass {
+    NSBundle *bundle = [NSBundle bundleWithModuleName:moduleName targetClass:targetClass];
     UIImage *img = [UIImage imageNamed:imageName
       inBundle: bundle
     compatibleWithTraitCollection:nil];

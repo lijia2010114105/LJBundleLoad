@@ -11,7 +11,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSBundle (LJLoad)
 
-+ (instancetype)bundleWithXIBForModuleName:(NSString *)moduleName targetClass:(Class)targetClass;
++ (instancetype)bundleWithModuleName:(NSString *)moduleName targetClass:(Class)targetClass;
 
 @end
 

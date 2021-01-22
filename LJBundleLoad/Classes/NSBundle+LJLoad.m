@@ -25,7 +25,7 @@
          NSArray *a = [bundle loadNibNamed:@"XIBFile" owner:nil options:nil];
  */
 
-+ (instancetype)bundleWithXIBForModuleName:(NSString *)moduleName targetClass:(Class)targetClass {
++ (instancetype)bundleWithModuleName:(NSString *)moduleName targetClass:(Class)targetClass {
     NSBundle *bundle = [NSBundle bundleForClass:targetClass];
     NSString *path = [bundle pathForResource:moduleName ofType:@"bundle"];
     if (path) {

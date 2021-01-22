@@ -23,6 +23,8 @@ NS_ASSUME_NONNULL_BEGIN
 //spec.resource_bundles 使用user_frameworks
 + (instancetype)image_resourceBundles_userFrameworks_imageName:(NSString *)imageName moduleName:(NSString *)moduleName;
 
++ (instancetype)imageWithName:(NSString *)imageName moduleName:(NSString *)moduleName targetClass:(Class)targetClass;
+
 @end
 
 NS_ASSUME_NONNULL_END
