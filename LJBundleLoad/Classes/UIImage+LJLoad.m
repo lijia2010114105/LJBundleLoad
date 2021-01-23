@@ -43,7 +43,7 @@
     associateBundleURL = [associateBundleURL URLByAppendingPathComponent:moduleName];
     associateBundleURL = [associateBundleURL URLByAppendingPathExtension:@"framework"];
     NSBundle *associateBunle = [NSBundle bundleWithURL:associateBundleURL];
-    associateBundleURL = [associateBunle URLForResource:@"CXSalesmanModule" withExtension:@"bundle"];
+    associateBundleURL = [associateBunle URLForResource:moduleName withExtension:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithURL:associateBundleURL];
     UIImage *img = [UIImage imageNamed:imageName
       inBundle: bundle

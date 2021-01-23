@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define LJImageLoad(imageName,moduleName) [UIImage imageNamed:imageName inBundle:[NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:moduleName withExtension:@"bundle"]] compatibleWithTraitCollection:nil]
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImage (LJLoad)

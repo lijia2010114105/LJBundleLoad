@@ -7,6 +7,17 @@
 
 #import <Foundation/Foundation.h>
 
+#define LJBundleLoad(moduleName,targetClass)\
+({\
+    NSBundle *mainBundle = [NSBundle mainBundle];\
+    NSBundle *bundle = [NSBundle bundleForClass:targetClass];\
+    NSString *path = [bundle pathForResource:moduleName ofType:@"bundle"];\
+    if (path) {\
+        mainBundle = [NSBundle bundleWithPath:path];\
+    }\
+    (mainBundle);\
+})\
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSBundle (LJLoad)
