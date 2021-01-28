@@ -10,19 +10,25 @@
 
 @implementation UIImage (LJLoad)
 
-//spec.resources  使用user_frameworks
+//spec.resources  使用user_frameworks【不建议使用，建议使用resource_bundles】
 + (instancetype)image_resource_userFrameworks_imageName:(NSString *)imageName moduleName:(NSString *)moduleName {
+    
     NSURL *associateBundleURL = [[NSBundle mainBundle] URLForResource:@"Frameworks" withExtension:nil];
     associateBundleURL = [associateBundleURL URLByAppendingPathComponent:moduleName];
     associateBundleURL = [associateBundleURL URLByAppendingPathExtension:@"framework"];
     NSBundle *bundle = [NSBundle bundleWithURL:associateBundleURL];
-    UIImage *img = [UIImage imageNamed:imageName
-      inBundle: bundle
-    compatibleWithTraitCollection:nil];
-    return img;
+    if (bundle) {
+        UIImage *image = [UIImage imageNamed:imageName
+          inBundle: bundle
+        compatibleWithTraitCollection:nil];
+        if (image) {
+            return image;
+        }
+    }
+    return [UIImage imageNamed:@""];
 }
 
-//spec.resources  不使用user_frameworks
+//spec.resources  不使用user_frameworks【不建议使用，建议使用resource_bundles】
 + (instancetype)image_resource_notUserFrameworks_imageName:(NSString *)imageName {
     return [self imageNamed:imageName];
 }
@@ -31,32 +37,37 @@
 + (instancetype)image_resourceBundles_notUserFrameworks_imageName:(NSString *)imageName moduleName:(NSString *)moduleName {
     NSURL *url = [[NSBundle mainBundle] URLForResource:moduleName withExtension:@"bundle"];
     NSBundle *bundle = [NSBundle bundleWithURL:url];
-    UIImage *img = [UIImage imageNamed:imageName
-      inBundle: bundle
-    compatibleWithTraitCollection:nil];
-    return img;
+    if (bundle) {
+        UIImage *img = [UIImage imageNamed:imageName
+          inBundle: bundle
+        compatibleWithTraitCollection:nil];
+        if (img) {
+            return img;
+        }
+    }
+    return [UIImage imageNamed:@""];
 }
 
 //spec.resource_bundles 使用user_frameworks
 + (instancetype)image_resourceBundles_userFrameworks_imageName:(NSString *)imageName moduleName:(NSString *)moduleName {
+    
     NSURL *associateBundleURL = [[NSBundle mainBundle] URLForResource:@"Frameworks" withExtension:nil];
     associateBundleURL = [associateBundleURL URLByAppendingPathComponent:moduleName];
     associateBundleURL = [associateBundleURL URLByAppendingPathExtension:@"framework"];
     NSBundle *associateBunle = [NSBundle bundleWithURL:associateBundleURL];
-    associateBundleURL = [associateBunle URLForResource:moduleName withExtension:@"bundle"];
-    NSBundle *bundle = [NSBundle bundleWithURL:associateBundleURL];
-    UIImage *img = [UIImage imageNamed:imageName
-      inBundle: bundle
-    compatibleWithTraitCollection:nil];
-    return img;
-}
-
-+ (instancetype)imageWithName:(NSString *)imageName moduleName:(NSString *)moduleName targetClass:(Class)targetClass {
-    NSBundle *bundle = [NSBundle bundleWithModuleName:moduleName targetClass:targetClass];
-    UIImage *img = [UIImage imageNamed:imageName
-      inBundle: bundle
-    compatibleWithTraitCollection:nil];
-    return img;
+    if (associateBunle) {
+        associateBundleURL = [associateBunle URLForResource:moduleName withExtension:@"bundle"];
+        NSBundle *bundle = [NSBundle bundleWithURL:associateBundleURL];
+        if (bundle) {
+            UIImage *image = [UIImage imageNamed:imageName
+              inBundle: bundle
+            compatibleWithTraitCollection:nil];
+            if (image) {
+                return image;
+            }
+        }
+    }
+    return [UIImage imageNamed:@""];
 }
 
 @end
