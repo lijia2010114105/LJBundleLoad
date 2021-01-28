@@ -21,7 +21,7 @@ pod 'LJBundleLoad'
 ```
 
 ## Note
-###使用配置：
+### 使用配置：
     1、假设你的组件名为：MyModule，有资源文件：view.xib，XNClusHomeTableViewCell.xib ，abc@2x.png，abc@3x.png，data.json
     2、xib,png,json等资源文件需要存放在:MyModule/Assets 目录下面
     3、MyModule.podspec文件中配置：
@@ -29,7 +29,7 @@ pod 'LJBundleLoad'
            'MyModule' => ['MyModule/Assets/*.{xib,png,json}']
          }
          
-   ###使用：
+   ### 使用：
   ##### 1、加载自定义视图 xib
   ```
   //正常使用
