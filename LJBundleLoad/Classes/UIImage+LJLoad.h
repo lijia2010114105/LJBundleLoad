@@ -10,18 +10,18 @@
 //spec.resources  使用user_frameworks【不建议使用，建议使用resource_bundles】
 #define LJImageLoad_resource_userFrameworks(imageName,moduleName) \
 ({\
-    UIImage *img = [UIImage imageNamed:@""];\
+    UIImage *image;\
     NSURL *associateBundleURL = [[NSBundle mainBundle] URLForResource:@"Frameworks" withExtension:nil];\
     associateBundleURL = [associateBundleURL URLByAppendingPathComponent:moduleName];\
     associateBundleURL = [associateBundleURL URLByAppendingPathExtension:@"framework"];\
     NSBundle *bundle = [NSBundle bundleWithURL:associateBundleURL];\
     if (bundle) {\
-        UIImage *image = [UIImage imageNamed:imageName inBundle: bundle compatibleWithTraitCollection:nil];\
-        if (image) {\
-            (image);\
-        }\
+        image = [UIImage imageNamed:imageName inBundle: bundle compatibleWithTraitCollection:nil];\
     }\
-    (img);\
+    if (!image) {\
+        image = [UIImage imageNamed:@""];\
+    }\
+    (image);\
 })\
 
 //spec.resources  不使用user_frameworks【不建议使用，建议使用resource_bundles】
@@ -30,22 +30,22 @@
 //spec.resource_bundles 不使用user_frameworks
 #define LJImageLoad_resourceBundles_notUserFrameworks(imageName,moduleName) \
 ({ \
-    UIImage *img = [UIImage imageNamed:@""];\
+    UIImage *image;\
     NSURL *url = [[NSBundle mainBundle] URLForResource:moduleName withExtension:@"bundle"];\
     NSBundle *bundle = [NSBundle bundleWithURL:url];\
     if (bundle) {\
-        UIImage *image = [UIImage imageNamed:imageName inBundle: bundle compatibleWithTraitCollection:nil];\
-        if (image) {\
-            (image);\
-        }\
+        image = [UIImage imageNamed:imageName inBundle: bundle compatibleWithTraitCollection:nil];\
     }\
-    (img);\
+    if (!image) {\
+        image = [UIImage imageNamed:@""];\
+    }\
+    (image);\
 }) \
 
 //spec.resource_bundles 使用user_frameworks
 #define LJImageLoad_resourceBundles_userFrameworks(imageName,moduleName) \
 ({\
-    UIImage *img = [UIImage imageNamed:@""];\
+    UIImage *image;\
     NSURL *associateBundleURL = [[NSBundle mainBundle] URLForResource:@"Frameworks" withExtension:nil];\
     associateBundleURL = [associateBundleURL URLByAppendingPathComponent:moduleName];\
     associateBundleURL = [associateBundleURL URLByAppendingPathExtension:@"framework"];\
@@ -54,13 +54,13 @@
         associateBundleURL = [associateBunle URLForResource:moduleName withExtension:@"bundle"];\
         NSBundle *bundle = [NSBundle bundleWithURL:associateBundleURL];\
         if (bundle) {\
-            UIImage *image = [UIImage imageNamed:imageName inBundle: bundle compatibleWithTraitCollection:nil];\
-            if (image) {\
-                (image);\
-            }\
+            image = [UIImage imageNamed:imageName inBundle: bundle compatibleWithTraitCollection:nil];\
         }\
     }\
-    (img);\
+    if (!image) {\
+        image = [UIImage imageNamed:@""];\
+    }\
+    (image);\
 })\
 
 NS_ASSUME_NONNULL_BEGIN
